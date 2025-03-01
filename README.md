@@ -48,7 +48,7 @@ A huge shoutout to the open-source community and all the contributors who made t
 ## 📞 Support  
 If you encounter any issues, feel free to:  
 - Open an issue on GitHub.  
-- Reach out via email at linuxlearner@gmail.com.  
+- Reach out via email at linuxlearner@seznam.cz.  
 
 ---
 
