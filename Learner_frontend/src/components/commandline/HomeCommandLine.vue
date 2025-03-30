@@ -28,12 +28,17 @@ const input = ref(null)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
 const cmdinput = ref('');
-let executedCommands = ref('')
+let executedCommands = ref(
+    'Hello Anonymous User :), \n\n' + 
+    'This web page is used for other people to teach other people linux. \n \n' +
+    'You can type "help" and you will learn how to control this application, but the main sites to look out for after login are the "lets learn" for learning again explained by "help", when you get there and "admin" for teaching people too explained by "help". \n\n'
+)
 const executedList = ref([])
 let executedIndex = ref(0)
 
 // mounting handlers for shortcuts
 onMounted(() => {
+    setInfo()
     input.value?.focus()
     window.addEventListener('keydown', handleKeyDown);
     document.addEventListener('click', handleClick);
@@ -214,6 +219,13 @@ function changeMode() {
 // handles if the user clicks somewhere
 function handleClick() {
     document.getElementById('cmd-input').focus();
+}
+
+async function setInfo() {
+    let localUser = await supabase.auth.getSession();
+    if (localUser.data.session) {
+        executedCommands.value = ""
+    }
 }
 
 async function createCheckout() {
